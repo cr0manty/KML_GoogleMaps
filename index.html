@@ -17,7 +17,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvNG5tRNvUa_-nN7XOWglDqjR6ZoqcNRg&callback=init">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvNG5tRNvUa_-nN7XOWglDqjR6ZoqcNRg&callback=init_url">
     </script>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
@@ -26,23 +26,23 @@
 <div class="d-flex flex-row justify-content-between">
     <div class="block">
         <div id="map"></div>
-        <div id="content-window"></div>
-
     </div>
     <div class="col-md-6 block" id="form">
-        <h1>Set new KML file</h1>
+        <h1>Set new marks from KML file</h1>
         <div class="form-group">
             <label for="kmlUrl">KML URL</label>
             <input type="url" class="form-control" id="kmlUrl" aria-describedby="kmlUrlHelp"
                    placeholder="Enter url for KML">
-            <small id="kmlUrlHelp" class="form-text text-muted">Use KML file from another site</small>
+            <small id="kmlUrlHelp" class="form-text text-muted">Use KML file from URL</small>
         </div>
         <div class="form-group">
             <label for="kmlLocal">KML Local</label>
-            <input type="file" class="form-control" id="kmlLocal" aria-describedby="kmlLocalHelp">
-            <small id="kmlLocalHelp" class="form-text text-muted">Use KML file from local</small>
+            <input type="file" class="form-control" id="kmlLocal" accept=".kml"
+                   aria-describedby="kmlLocalHelp">
+            <small id="kmlLocalHelp" class="form-text text-muted">Use local KML file</small>
         </div>
         <button class="btn btn-danger" id="set_btn">Set</button>
+        <div id="content-window"></div>
     </div>
 </div>
 

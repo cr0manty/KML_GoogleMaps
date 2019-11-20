@@ -25,9 +25,14 @@ body {
 
 #content-window {
     float: left;
+    margin-top: 2rem;
     font-family: 'Roboto', 'sans-serif';
     height: 100%;
     line-height: 30px;
     padding-left: 10px;
     width: 19%;
+}
+
+h6, .google_mark {
+    color: black;
 }
