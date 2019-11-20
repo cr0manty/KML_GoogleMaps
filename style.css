@@ -1,0 +1,33 @@
+body {
+    background-color: rgba(2, 4, 14, 0.95);
+    color: white;
+}
+
+#map {
+    margin: 10px;
+    height: 800px;
+    width: 800px;
+    overflow: hidden;
+    float: left;
+    border: thin solid #333;
+}
+
+#form {
+    margin-top: 7rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+#set_btn {
+    width: 4rem;
+    float: right;
+}
+
+#content-window {
+    float: left;
+    font-family: 'Roboto', 'sans-serif';
+    height: 100%;
+    line-height: 30px;
+    padding-left: 10px;
+    width: 19%;
+}
