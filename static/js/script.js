@@ -1,18 +1,16 @@
 let map;
-const src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
 
-function init_url(url = src) {
-    if (!url.startsWith('http') || !url.endsWith('.kml')){
-        alert('The url should lead to a KML file ');
-        return;
-    }
-    const init = !!!map;
+function init_url(url = null) {
     map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(-19.257753, 146.823688),
         zoom: 1,
         mapTypeId: 'terrain'
     });
-    if (!init) {
+    if (url) {
+        if (!url.startsWith('http') || !url.endsWith('.kml')) {
+            alert('The url should lead to a KML file ');
+            return;
+        }
         const kmlLayer = new google.maps.KmlLayer(url, {
             suppressInfoWindows: true,
             preserveViewport: false,
