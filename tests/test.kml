@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml>
+    <Placemark>
+        <name>A simple placemark on the ground</name>
+        <description>Извержение Этны 13 июля 2001 года.</description>
+        <Point>
+            <coordinates>8.542952335953721,47.36685263064198,0</coordinates>
+        </Point>
+    </Placemark>
+</kml>
