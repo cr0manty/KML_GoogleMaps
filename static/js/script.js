@@ -39,27 +39,27 @@ function read_file(file) {
 
 async function extractMarks(plainText) {
     const parser = new DOMParser();
-    const xmlDoc = parser.parseFromString(plainText, "text/xml");
+    const doc = $(parser.parseFromString(plainText, "text/xml"));
     const marks = [];
 
-    if (xmlDoc.documentElement.nodeName === "kml") {
-        for (const item of xmlDoc.getElementsByTagName('Placemark')) {
+    if (doc.find('kml').length) {
+        for (let item of doc.find('Placemark')) {
+            item = $(item);
             let coordinates = [];
 
-            for (const marker of item.getElementsByTagName('Point')) {
-                const coords = marker.getElementsByTagName('coordinates')[0]
-                    .childNodes[0].nodeValue.trim().split(",");
+            for (const marker of item.find('Point')) {
+                const coords = $(marker).find('coordinates').html().split(",");
                 coordinates.push({lat: +coords[1], lng: +coords[0]});
             }
             let marker = {
-                name: item.getElementsByTagName('name')[0].childNodes[0].nodeValue.trim(),
-                description: item.getElementsByTagName('description')[0].childNodes[0].nodeValue.trim(),
+                name: item.find('name').html(),
+                description: item.find('description').html(),
                 coordinates: coordinates[0]
             };
             marks.push(marker);
         }
     } else {
-        throw "error while parsing";
+        throw "Error while parsing";
     }
     return marks;
 }
