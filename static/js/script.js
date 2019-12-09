@@ -27,12 +27,15 @@ function init_url(url = null) {
 function read_file(file) {
     const fileReader = new FileReader();
     fileReader.onload = async function (data) {
-        const result = await extractMarks(data.target.result);
-        init_local(result);
-        console.log(result);
+        try {
+            const result = await extractMarks(data.target.result);
+            init_local(result);
+        } catch(error) {
+            alert(error);
+        }
     };
     fileReader.onerror = function (event) {
-        console.error("Файл не может быть прочитан! код: " + event.target.error.code);
+        alert("Read file error, code: " + event.target.error.code);
     };
     fileReader.readAsText(file)
 }
@@ -101,7 +104,7 @@ $(function () {
             init_url(url.val());
             url.val('')
         } else {
-            alert('File not selected');
+            alert('File or url not specified!');
         }
     });
 });
