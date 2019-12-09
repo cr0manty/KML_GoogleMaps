@@ -28,9 +28,9 @@ function read_file(file) {
     const fileReader = new FileReader();
     fileReader.onload = async function (data) {
         try {
-            const result = await extractMarks(data.target.result);
+            const result = await extract_marks(data.target.result);
             init_local(result);
-        } catch(error) {
+        } catch (error) {
             alert(error);
         }
     };
@@ -40,9 +40,9 @@ function read_file(file) {
     fileReader.readAsText(file)
 }
 
-async function extractMarks(plainText) {
+async function extract_marks(body) {
     const parser = new DOMParser();
-    const doc = $(parser.parseFromString(plainText, "text/xml"));
+    const doc = $(parser.parseFromString(body, "text/xml"));
     const marks = [];
 
     if (doc.find('kml').length) {
@@ -54,12 +54,11 @@ async function extractMarks(plainText) {
                 const coords = $(marker).find('coordinates').html().split(",");
                 coordinates.push({lat: +coords[1], lng: +coords[0]});
             }
-            let marker = {
+            marks.push({
                 name: item.find('name').html(),
                 description: item.find('description').html(),
                 coordinates: coordinates[0]
-            };
-            marks.push(marker);
+            });
         }
     } else {
         throw "Error while parsing";
